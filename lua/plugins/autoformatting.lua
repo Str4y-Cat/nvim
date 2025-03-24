@@ -11,38 +11,38 @@ return {
     local diagnostics = null_ls.builtins.diagnostics
 
     --formatters and linters for mason to install
-    require('mason-null-ls').setup{
+    require('mason-null-ls').setup {
       ensure_installed = {
         'prettier', -- js and typescript
-        'stylua', -- lua
+        'stylua',   -- lua
         'eslint_d', -- ts/js linter
-        'shfmt', --shell 
+        'shfmt',    --shell
       },
       automatic_installation = true,
     }
 
     local sources = {
-      formatting.prettier.with {filetypes = {'html', 'json', 'yaml', 'markdown'}},
+      -- diagnostics.eslint_d,
+      formatting.prettier.with { filetypes = { 'vue', 'html', 'json', 'yaml', 'markdown' } },
       formatting.stylua,
-      formatting.shfmt.with {args = {'-i','4'}},
+      formatting.shfmt.with { args = { '-i', '4' } },
     }
 
-    local augroup = vim.api.nvim_create_augroup('LspFormatting',{})
-    null_ls.setup{
+    local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+    null_ls.setup {
 
       sources = sources,
       on_attach = function(client, bufnr)
         if client.supports_method 'textDocument/formatting' then
-          vim.api.nvim_clear_autocmds {group = augroup, buffer = bufnr}
-          vim.api.nvim_create_autocmd('BufWritePre',{
+          vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+          vim.api.nvim_create_autocmd('BufWritePre', {
             group = augroup,
             buffer = bufnr,
             callback = function()
-              vim.lsp.buf.format {async = false}
-            end 
+              vim.lsp.buf.format { async = false }
+            end
 
           })
-          
         end
       end
 

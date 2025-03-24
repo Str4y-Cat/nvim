@@ -1,12 +1,10 @@
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-
-
     local filename = {
       'filename',
       file_status = true,
-      path = 0, -- 0= just filename 1 = relative path 2 = absolute path
+      path = 1, -- 0= just filename 1 = relative path 2 = absolute path
     }
 
     local hide_in_width = function()
@@ -15,9 +13,9 @@ return {
 
     local diagnostics = {
       'diagnostics',
-      sources = {'nvim_diagnostic'},
-      sections = {'error' ,'warn'},
-      symbols = {error = '', warn = '', info = '', hint = '󰌶'},
+      sources = { 'nvim_diagnostic' },
+      sections = { 'error', 'warn' },
+      symbols = { error = '', warn = '', info = '', hint = '󰌶' },
       colored = false,
       update_in_insert = false,
       always_visible = false,
@@ -25,9 +23,9 @@ return {
     }
 
     local diff = {
-      'diff', 
+      'diff',
       colored = false,
-      symbols = {added = "", modified = '', removed = ''},
+      symbols = { added = "", modified = '', removed = '' },
       cond = hide_in_width,
     }
 
@@ -38,8 +36,8 @@ return {
         -- extra glyphs
         --   
 
-        component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
         disabled_filetypes = {
           statusline = {},
           winbar = {},
@@ -55,18 +53,18 @@ return {
         }
       },
       sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch'},
-        lualine_c = {filename},
-        lualine_x = { diff, diagnostics,{'filetype', cond = hide_in_width}},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch' },
+        lualine_c = { filename },
+        lualine_x = { diff, diagnostics, { 'filetype', cond = hide_in_width } },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
       },
@@ -75,6 +73,5 @@ return {
       inactive_winbar = {},
       extensions = {}
     }
-
   end,
 }

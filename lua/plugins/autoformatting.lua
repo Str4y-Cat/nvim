@@ -1,52 +1,41 @@
 return {
-  'nvimtools/none-ls.nvim',
-  dependencies = {
-    'nvimtools/none-ls-extras.nvim',
-    'jayp0521/mason-null-ls.nvim',
-  },
-
+  "stevearc/conform.nvim",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local null_ls = require 'null-ls'
-    local formatting = null_ls.builtins.formatting
-    local diagnostics = null_ls.builtins.diagnostics
+    local conform = require("conform")
 
-    --formatters and linters for mason to install
-    require('mason-null-ls').setup {
-      ensure_installed = {
-        'prettier', -- js and typescript
-        'stylua',   -- lua
-        'eslint_d', -- ts/js linter
-        'shfmt',    --shell
+    conform.setup({
+      formatters_by_ft = {
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        javascriptreact = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        svelte = { "prettierd" },
+        css = { "prettierd" },
+        scss = { "prettierd" },
+        html = { "prettierd" },
+        json = { "prettierd" },
+        yaml = { "prettierd" },
+        markdown = { "prettierd" },
+        graphql = { "prettierd" },
+        vue = { "prettierd" },
+        lua = { "stylua" },
+        blade = { "blade-formatter" },
+        bash = { "shfmt" },
       },
-      automatic_installation = true,
-    }
+      format_on_save = {
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
+      },
+    })
 
-    local sources = {
-      -- diagnostics.eslint_d,
-      formatting.prettier.with { filetypes = { 'vue', 'html', 'json', 'yaml', 'markdown' } },
-      formatting.stylua,
-      formatting.shfmt.with { args = { '-i', '4' } },
-    }
-
-    local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-    null_ls.setup {
-
-      sources = sources,
-      on_attach = function(client, bufnr)
-        if client.supports_method 'textDocument/formatting' then
-          vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format { async = false }
-            end
-
-          })
-        end
-      end
-
-
-    }
-  end
+    vim.keymap.set({ "n", "v" }, "<leader>f", function()
+      conform.format({
+        lsp_format = true,
+        async = false,
+        timeout_ms = 1000,
+      })
+    end, { desc = "[F]ormat file or range (in visual mode)" })
+  end,
 }

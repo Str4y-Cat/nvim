@@ -16,6 +16,7 @@ return {
 		--PERF:
 		--NOTE:
 		--MAGIC:
+		--REFACTOR:
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -24,11 +25,13 @@ return {
 
 			keywords = {
 				MAGIC = { icon = " ", color = "magic" },
+				REFACTOR = { icon = " ", color = "refactor" },
 				PERF = { icon = "󰓅 " },
 			},
 
 			colors = {
 				magic = { "#7C3AED" },
+				refactor = { "#ff8b30" },
 			},
 		},
 	},

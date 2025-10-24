@@ -85,7 +85,7 @@ return {
 
 				-- Rename the variable under your cursor.
 				--  Most Language Servers support renaming across files, etc.
-				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame variable under cursor")
 
 				-- Execute a code action, usually your cursor needs to be on top of an error
 				-- or a suggestion from your LSP for this to activate.
@@ -208,7 +208,7 @@ return {
 			--  See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			--
 			-- Vue 3
-			volar = {},
+			-- volar = {},
 			-- TypeScript
 			ts_ls = {
 				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
@@ -330,6 +330,7 @@ return {
 		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
+			"ts_ls",
 			"stylua", -- Used to format Lua code
 			"eslint_d",
 			"prettierd",

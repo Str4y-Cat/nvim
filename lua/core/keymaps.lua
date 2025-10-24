@@ -27,8 +27,8 @@ vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", opts)
 
 -- set split to full screen
-vim.keymap.set("n", "<leader>wf", "<C-w|>", { desc = "Make [W]indow [F]ullscreen" })
-vim.keymap.set("n", "<leader>pe", "<C-w+>", { desc = "Make [W]indows [E]qual" })
+vim.keymap.set("n", "<leader>wf", "<C-w>|", { desc = "Make [W]indow [F]ullscreen" })
+vim.keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make [W]indows [E]qual" })
 
 -- toggle line wrapping
 vim.keymap.set("n", "<leader>lw", "<cmd>set wrap!<CR>", opts)

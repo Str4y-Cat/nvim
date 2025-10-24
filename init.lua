@@ -63,6 +63,9 @@ require("lazy").setup({
 	-- Directory viewer and editor
 	require("plugins.oil"),
 
+	-- Lazygit
+	require("plugins.lazygit"),
+
 	-- Miscelaneous, less than 10 lines of config
 	require("plugins.misc"),
 })

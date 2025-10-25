@@ -28,7 +28,7 @@ return {
 			format_on_save = {
 				lsp_fallback = true,
 				async = false,
-				timeout_ms = 1000,
+				timeout_ms = 2000,
 			},
 			notify_on_error = true,
 			formatters = {
@@ -48,7 +48,7 @@ return {
 			conform.format({
 				lsp_format = true,
 				async = false,
-				timeout_ms = 1000,
+				timeout_ms = 2000,
 			})
 		end, { desc = "[F]ormat file or range (in visual mode)" })
 	end,

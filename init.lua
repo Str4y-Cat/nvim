@@ -68,4 +68,6 @@ require("lazy").setup({
 
 	-- Miscelaneous, less than 10 lines of config
 	require("plugins.misc"),
+	-- smear
+	-- require("plugins.smear"),
 })

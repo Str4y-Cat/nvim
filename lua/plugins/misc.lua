@@ -9,6 +9,16 @@ return {
 	},
 	{
 		-- Highlight todo, notes, etc in comments
+		-- Creates coloured todo comments.
+		--FIX:
+		--TODO:
+		--HACK:
+		--WARN:
+		--PERF:
+		--NOTE:
+		--MAGIC:
+		--REFACTOR:
+		--
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -32,7 +42,12 @@ return {
 		-- Colour highlighter, for working with colors, aka #ff0032
 		"norcalli/nvim-colorizer.lua",
 		config = function()
-			require("colorizer").setup()
+			require("colorizer").setup({
+				"*",
+				css = {
+					css = true,
+				},
+			})
 		end,
 	},
 }

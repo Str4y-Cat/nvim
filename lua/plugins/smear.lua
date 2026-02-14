@@ -1,7 +1,8 @@
 return {
 	"sphamba/smear-cursor.nvim",
 	--fire
-	-- opts = { cursor_color = "#ff4000",
+	-- opts = {
+	-- 	cursor_color = "#ff4000",
 	-- 	particles_enabled = true,
 	-- 	stiffness = 0.5,
 	-- 	trailing_stiffness = 0.2,
@@ -26,7 +27,7 @@ return {
 	opts = {
 		cursor_color = "#ffffff",
 		gradient_exponent = 0,
-		particles_enabled = true,
+		particles_enabled = false,
 		particle_spread = 1,
 		particles_per_second = 100,
 		particles_per_length = 50,

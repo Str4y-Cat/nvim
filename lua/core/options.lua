@@ -1,18 +1,27 @@
-//DEFAULT OPTIONS
+--DEFAULT OPTIONS
 
+-- LINES
+vim.wo.number = true -- Make line numbers default
+vim.o.relativenumber = true -- set relative line numbers
+vim.o.wrap = true -- Display lines as one long line
+vim.o.linebreak = true -- Companion to wrap, don't split words
+vim.o.autoindent = true -- Copy the indent from current line when starting a new one
 
+--Setting tabstops
+vim.o.expandtab = true -- convert tabs to spaces
+vim.o.tabstop = 2 -- insert n spaces for a tab
+vim.o.softtabstop = 2 --
+vim.o.shiftwidth = 2 -- the number of spaces inserted for each indentation
 
--- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
-
--- Make line numbers default
-vim.o.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+-- SEARCHING
+vim.o.ignorecase = true -- Case insensitive searching UNLESS \C or capital is present
+vim.o.smartcase = true -- Smart case?
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = "a"
+
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = false
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
@@ -26,14 +35,10 @@ vim.schedule(function()
 end)
 
 -- Enable break indent
-vim.o.breakindent = true
+--vim.o.breakindent = true
 
 -- Save undo history
 vim.o.undofile = true
-
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.o.ignorecase = true
-vim.o.smartcase = true
 
 -- Keep signcolumn on by default
 vim.o.signcolumn = "yes"
@@ -57,7 +62,7 @@ vim.o.splitbelow = true
 --   See `:help lua-options`
 --   and `:help lua-guide-options`
 vim.o.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = "split"
@@ -72,19 +77,3 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
-
--- Diagnostic Config & Keymaps
--- See :help vim.diagnostic.Opts
-vim.diagnostic.config({
-	update_in_insert = false,
-	severity_sort = true,
-	float = { border = "rounded", source = "if_many" },
-	underline = { severity = vim.diagnostic.severity.ERROR },
-
-	-- Can switch between these as you prefer
-	virtual_text = true, -- Text shows up at the end of the line
-	virtual_lines = false, -- Teest shows up underneath the line, with virtual lines
-
-	-- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
-	jump = { float = true },
-})

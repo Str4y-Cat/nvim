@@ -119,29 +119,34 @@ return {
 		-- Enable the following language servers
 		--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 		--  See `:help lsp-config` for information about keys and how to configure
+		-- :help lspconfig-all for all lsps
 		local servers = {
 
-			-- vue_ls = {},
-			-- ts_ls = {
-			-- 	filetypes = { "vue", "typescript", "javascript", "javascriptreact", "typescriptreact" },
-			-- 	init_options = {
-			-- 		plugins = {
-			-- 			{
-			-- 				name = "@vue/typescript-plugin",
-			-- 				location = vim.fn.stdpath("data")
-			-- 					.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
-			-- 				languages = { "vue" },
-			-- 				configNamespace = "typescript",
-			-- 			},
-			-- 		},
-			-- 	},
-			-- },
-			-- -- html = {},
-			-- cssls = {},
+			-- ts_ls = {},
+			vue_ls = {},
+			ts_ls = {
+				filetypes = { "vue", "typescript", "javascript", "javascriptreact", "typescriptreact" },
+				init_options = {
+					plugins = {
+						{
+							name = "@vue/typescript-plugin",
+							location = vim.fn.stdpath("data")
+								.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+							languages = { "vue" },
+							configNamespace = "typescript",
+						},
+					},
+				},
+			},
+			html = {},
+			cssls = {},
 			phpactor = {},
-			-- bashls = {},
-			-- emmet_ls = {},
-			-- glsl_analyzer = {},
+			-- typescript_language_server = {},
+			bashls = {},
+			emmet_ls = {
+				filetypes = { "html", "blade" },
+			},
+			glsl_analyzer = {},
 		}
 
 		-- Ensure the servers and tools above are installed
@@ -153,7 +158,10 @@ return {
 		-- You can press `g?` for help in this menu.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
-			"typescript-language-server",
+			-- "typescript-language-server",
+			-- "ts_ls",
+			-- "html_ls",
+			-- "emmet_ls",
 			"stylua", -- Used to format Lua code
 			-- You can add other tools here that you want Mason to install
 			"eslint_d",
@@ -163,7 +171,24 @@ return {
 			-- "php-cs-fixer",
 		})
 
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+		--NOTE: This is a workaround to the mason tool installer. It was breaking in the previous configuration
+		local duplicate_ensure_installed = {
+
+			"vue-language-server",
+			"html-lsp",
+			"css-lsp",
+			"phpactor",
+			"typescript-language-server",
+			"bash-language-server",
+			"emmet-ls",
+			"glsl_analyzer",
+			"stylua",
+			"eslint_d",
+			"prettierd",
+			"shfmt",
+		}
+
+		require("mason-tool-installer").setup({ ensure_installed = duplicate_ensure_installed })
 
 		for name, server in pairs(servers) do
 			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
@@ -202,5 +227,6 @@ return {
 			},
 		})
 		vim.lsp.enable("lua_ls")
+		vim.lsp.enable("typescript-language-server")
 	end,
 }

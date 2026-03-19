@@ -123,6 +123,7 @@ return {
 		local servers = {
 
 			-- ts_ls = {},
+			shopify_theme_ls = {},
 			vue_ls = {},
 			ts_ls = {
 				filetypes = { "vue", "typescript", "javascript", "javascriptreact", "typescriptreact" },
@@ -140,11 +141,12 @@ return {
 			},
 			html = {},
 			cssls = {},
-			phpactor = {},
+			-- phpactor = {},
+			intelephense = {},
 			-- typescript_language_server = {},
 			bashls = {},
 			emmet_ls = {
-				filetypes = { "html", "blade" },
+				filetypes = { "html", "blade", "liquid" },
 			},
 			glsl_analyzer = {},
 		}
@@ -162,10 +164,12 @@ return {
 			-- "ts_ls",
 			-- "html_ls",
 			-- "emmet_ls",
+
 			"stylua", -- Used to format Lua code
 			-- You can add other tools here that you want Mason to install
 			"eslint_d",
 			"prettierd",
+			"pint",
 			-- "blade-formatter",
 			"shfmt",
 			-- "php-cs-fixer",
@@ -174,8 +178,10 @@ return {
 		--NOTE: This is a workaround to the mason tool installer. It was breaking in the previous configuration
 		local duplicate_ensure_installed = {
 
+			"shopify-cli",
 			"vue-language-server",
 			"html-lsp",
+			"intelephense",
 			"css-lsp",
 			"phpactor",
 			"typescript-language-server",
@@ -186,6 +192,7 @@ return {
 			"eslint_d",
 			"prettierd",
 			"shfmt",
+			"pint",
 		}
 
 		require("mason-tool-installer").setup({ ensure_installed = duplicate_ensure_installed })

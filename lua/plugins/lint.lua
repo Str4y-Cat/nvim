@@ -13,6 +13,7 @@ return {
 				typescriptreact = { "eslint_d" },
 				svelte = { "eslint_d" },
 				vue = { "eslint_d" },
+				-- liquid = { "shopify-cli" },
 			}
 
 			-- To allow other plugins to add linters to require('lint').linters_by_ft,

@@ -1,5 +1,7 @@
 --DEFAULT OPTIONS
 
+vim.env.CC = "gcc"
+
 -- LINES
 vim.wo.number = true -- Make line numbers default
 vim.o.relativenumber = true -- set relative line numbers

@@ -25,7 +25,7 @@ rtp:prepend(lazypath)
 require("lazy").setup({
 
 	-- NOTE: Here is where you install your plugins.
-	--
+
 	-- global color theme
 
 	-- Landing page

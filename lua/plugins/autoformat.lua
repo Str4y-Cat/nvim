@@ -13,7 +13,18 @@ return { -- Autoformat
 		},
 	},
 	opts = {
-		notify_on_error = false,
+		notify_on_error = true,
+		formatters = {
+			pint = {
+				command = "php",
+				args = function(_, ctx)
+					local vendor_pint =
+						vim.fs.find("vendor/bin/pint", { upward = true, path = ctx.dirname })[1]
+					return { vendor_pint or "vendor/bin/pint", ctx.filename }
+				end,
+				stdin = false,
+			},
+		},
 		format_on_save = function(bufnr)
 			-- Disable "format_on_save lsp_fallback" for languages that don't
 			-- have a well standardized coding style. You can add additional
@@ -23,7 +34,7 @@ return { -- Autoformat
 				return nil
 			else
 				return {
-					timeout_ms = 1000,
+					timeout_ms = 2000,
 					lsp_format = "fallback",
 				}
 			end
@@ -44,11 +55,13 @@ return { -- Autoformat
 			markdown = { "prettierd", "prettier", stop_after_first = true },
 			graphql = { "prettierd", "prettier", stop_after_first = true },
 			vue = { "prettierd", "prettier", stop_after_first = true },
+			vue = { "prettierd", "prettier", stop_after_first = true },
+			liquid = { "prettier" },
 			blade = { "blade-formatter" },
 
 			-- blade = { "pint" },
 			bash = { "shfmt" },
-			php = { "pint", "php", stop_after_first = true },
+			php = { "pint" },
 			glsl = { "glsl_analyzer" },
 		},
 	},

@@ -123,6 +123,8 @@ return {
 		local servers = {
 
 			-- ts_ls = {},
+			astro_ls = {},
+			svelte = {},
 			vue_ls = {},
 			ts_ls = {
 				filetypes = { "vue", "typescript", "javascript", "javascriptreact", "typescriptreact" },
@@ -140,11 +142,11 @@ return {
 			},
 			html = {},
 			cssls = {},
-			phpactor = {},
+			intelephense = {},
 			-- typescript_language_server = {},
 			bashls = {},
 			emmet_ls = {
-				filetypes = { "html", "blade" },
+				filetypes = { "html", "blade", "vue" },
 			},
 			glsl_analyzer = {},
 		}
@@ -175,11 +177,13 @@ return {
 		local duplicate_ensure_installed = {
 
 			"vue-language-server",
+			"svelte-language-server",
 			"html-lsp",
 			"css-lsp",
-			"phpactor",
+			"intelephense",
 			"typescript-language-server",
 			"bash-language-server",
+			"astro-language-server",
 			"emmet-ls",
 			"glsl_analyzer",
 			"stylua",

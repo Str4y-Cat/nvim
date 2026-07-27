@@ -592,7 +592,7 @@ return {
 
 			vue_ls = {},
 			ts_ls = {
-				filetypes = { "vue", "typescript", "javascript", "javascriptreact", "typescriptreact" },
+				filetypes = { "vue", "astro", "typescript", "javascript", "javascriptreact", "typescriptreact" },
 				-- on_attach = function(client)
 				-- 	if vim.bo.filetype == "vue" then
 				-- 		existing_capabilities.semanticTokensProvider.full = false

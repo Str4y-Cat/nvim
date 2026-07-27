@@ -14,6 +14,7 @@ return {
 				css = { "prettierd" },
 				scss = { "prettierd" },
 				html = { "prettierd" },
+				astro = { "prettierd" },
 				json = { "prettierd" },
 				yaml = { "prettierd" },
 				markdown = { "prettierd" },

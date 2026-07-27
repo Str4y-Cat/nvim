@@ -21,6 +21,7 @@ return { -- Highlight, edit, and navigate code
 			"javascript",
 			"css",
 			"scss",
+			"svelte",
 		},
 		-- Autoinstall languages that are not installed
 		auto_install = true,
@@ -50,6 +51,7 @@ return { -- Highlight, edit, and navigate code
 			"liquid",
 			"typescript",
 			"vue",
+			"svelte",
 		}
 
 		for _, parser in ipairs(parsers) do

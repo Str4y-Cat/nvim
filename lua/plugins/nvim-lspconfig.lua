@@ -146,7 +146,7 @@ return {
 			},
 			html = {},
 			cssls = {},
-			intelephense = {},
+			phpantom_lsp = {},
 			-- typescript_language_server = {},
 			bashls = {},
 			emmet_ls = {

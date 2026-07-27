@@ -81,7 +81,13 @@ return { -- Autocompletion
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets" },
+			default = { "lsp", "path", "snippets", "blade-nav" },
+			providers = {
+				["blade-nav"] = {
+					name = "blade-nav",
+					module = "blade-nav.integrations.blink",
+				},
+			},
 		},
 
 		snippets = { preset = "luasnip" },

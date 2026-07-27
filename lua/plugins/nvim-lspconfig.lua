@@ -127,7 +127,7 @@ return {
 		local servers = {
 
 			-- ts_ls = {},
-			astro_ls = {},
+			astro = {},
 			svelte = {},
 			vue_ls = {},
 			ts_ls = {

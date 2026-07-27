@@ -6,6 +6,10 @@ return {
 		-- Mason must be loaded before its dependents so we need to set it up here.
 		-- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
 		{ "mason-org/mason.nvim", opts = {} },
+		-- Translates between nvim-lspconfig server names and mason.nvim package
+		-- names (e.g. lua_ls <-> lua-language-server) so mason-tool-installer's
+		-- ensure_installed list can just use the servers table keys below.
+		{ "mason-org/mason-lspconfig.nvim", opts = { automatic_enable = false } },
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 		-- Useful status updates for LSP.
@@ -160,39 +164,14 @@ return {
 		-- You can press `g?` for help in this menu.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
-			-- "typescript-language-server",
-			-- "ts_ls",
-			-- "html_ls",
-			-- "emmet_ls",
 			"stylua", -- Used to format Lua code
 			-- You can add other tools here that you want Mason to install
 			"eslint_d",
 			"prettierd",
-			-- "blade-formatter",
 			"shfmt",
-			-- "php-cs-fixer",
 		})
 
-		--NOTE: This is a workaround to the mason tool installer. It was breaking in the previous configuration
-		local duplicate_ensure_installed = {
-
-			"vue-language-server",
-			"svelte-language-server",
-			"html-lsp",
-			"css-lsp",
-			"intelephense",
-			"typescript-language-server",
-			"bash-language-server",
-			"astro-language-server",
-			"emmet-ls",
-			"glsl_analyzer",
-			"stylua",
-			"eslint_d",
-			"prettierd",
-			"shfmt",
-		}
-
-		require("mason-tool-installer").setup({ ensure_installed = duplicate_ensure_installed })
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 		for name, server in pairs(servers) do
 			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
@@ -231,6 +210,5 @@ return {
 			},
 		})
 		vim.lsp.enable("lua_ls")
-		vim.lsp.enable("typescript-language-server")
 	end,
 }

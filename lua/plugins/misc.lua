@@ -40,7 +40,8 @@ return {
 	{ "NMAC427/guess-indent.nvim", opts = {} },
 	{
 		-- Colour highlighter, for working with colors, aka #ff0032
-		"norcalli/nvim-colorizer.lua",
+		-- norcalli's original is unmaintained; catgoose's fork is the active continuation
+		"catgoose/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup({
 				"*",

@@ -12,6 +12,7 @@ return { -- Useful plugin to show you pending keybinds.
 			{ "<leader>t", group = "[T]oggle" },
 			{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 			{ "<leader>d", group = "[D]ebug" },
+			{ "<leader>n", group = "[N]eotest" },
 		},
 	},
 }

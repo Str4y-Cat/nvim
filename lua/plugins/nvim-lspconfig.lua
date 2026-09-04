@@ -171,7 +171,6 @@ return {
 			"shfmt",
 			"pint",
 			"blade-formatter",
-			"markdownlint",
 		})
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

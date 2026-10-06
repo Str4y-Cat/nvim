@@ -1,0 +1,19 @@
+background = #171717
+background-opacity = 1
+command = /nix/store/8riw4cfkd3jyvf46s7hvlx0yk06x9abv-fish-4.8.0/bin/fish
+font-family = FiraCode Nerd Font Mono
+font-feature = calt
+font-feature = liga
+font-size = 14
+font-style = SemiBold
+foreground = #dedacf
+keybind = super+left=unbind
+keybind = super+right=unbind
+keybind = super+enter=new_split:right
+keybind = super+shift+d=new_split:down
+keybind = super+j=goto_split:down
+keybind = super+k=goto_split:up
+keybind = super+l=goto_split:right
+keybind = super+h=goto_split:left
+keybind = super+f=toggle_split_zoom
+keybind = super+shift+q=close_window
